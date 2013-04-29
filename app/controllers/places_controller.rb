@@ -16,7 +16,9 @@ class PlacesController < ApplicationController
   end
 
   def show
-    @place = Place.find_by_path(params[:path])
+    @path = params[:path]
+    
+    @place = Place.find_by_path(@path)
     
     render :action => :index
   end

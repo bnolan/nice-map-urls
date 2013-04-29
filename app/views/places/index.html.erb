@@ -14,6 +14,11 @@
 
 <script>
   $(function(){
-    new SearchView(<%= @place.to_json.html_safe %>)
+    var view = new SearchView(<%= @place.to_json.html_safe %>)
+    
+    <% if @path.present? and @place.nil? %>
+      // This is vulnerable to html injection...
+      view.resolveAndGoto(<%= @path.to_json.html_safe %>);
+    <% end %>
   });
 </script>

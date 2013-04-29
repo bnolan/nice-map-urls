@@ -11,7 +11,7 @@ class GeocodeResult extends Backbone.Model
       c.long_name
     
     if @isEstablishment()
-      pathComponents.unshift(place.get('name'))
+      pathComponents.unshift(@get('name'))
 
     pathComponents = for c in pathComponents
       c.toLowerCase().replace(/[-\s]+/g,'-')
@@ -57,7 +57,7 @@ class SearchView
     
     @createMap()
     @addAutocomplete()
-    
+  
   onSubmit: (e) =>
     e.preventDefault()
     
@@ -118,10 +118,22 @@ class SearchView
     google.maps.event.addListener @autocomplete, 'place_changed', @onAutocomplete
     
   onAutocomplete: =>
-    window.place = place = new GeocodeResult(@autocomplete.getPlace())
-
-    # console.log place
-
+    @savePlace(new GeocodeResult(@autocomplete.getPlace()))
+    
+  resolveAndGoto: (path) ->
+    geocoder = new google.maps.Geocoder()
+    
+    address = path.split('/').reverse().join(", ")
+    
+    geocoder.geocode { 'address': address }, (results, status) =>
+      place = new GeocodeResult(results[0])
+      
+      place.getPath = ->
+        path
+        
+      @savePlace(place)
+    
+  savePlace: (place) ->
     place.save = ->
       params = {
         path : place.getPath()
