@@ -1,0 +1,19 @@
+<%= form_for Place.new do |f| %>
+  <%= text_field_tag :address, '', :placeholder => 'search for address...' %>
+  <button type="submit">Search</button>
+  
+  <%= f.hidden_field :path %>
+  <%= f.hidden_field :geocode %>
+  <%= f.hidden_field :latitude %>
+  <%= f.hidden_field :longitude %>
+<% end %>
+
+<div id="map">
+  
+</div>
+
+<script>
+  $(function(){
+    new SearchView(<%= @place.to_json.html_safe %>)
+  });
+</script>

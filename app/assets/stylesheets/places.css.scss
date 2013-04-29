@@ -1,0 +1,56 @@
+// Place all the styles related to the places controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+body{
+  font-family: helvetica, sans-serif;
+  font-size: 0.9em;
+}
+
+html, body{
+  margin : 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+address{
+  font-style: normal;
+  line-height: 1.5em;
+  font-size: 0.9em;
+}
+
+form.new_place{
+  padding: 5px;
+  background: #ffc;
+  border-bottom: 1px solid #ccc;
+  
+  input, button{
+    font: inherit;
+  }
+  
+  input{
+    width: 85%;
+    padding: 10px;
+    border: 1px solid #ccc;
+  }
+  
+  button{
+    width: 9%;
+    background: #0af;
+    color: white;
+    text-shadow: 1px 1px 1px black;
+    border: 1px solid #ccc;
+    padding: 10px;
+  }
+  
+  button:hover{
+    background: #3cf;
+    cursor: pointer;
+  }
+}
+
+#map{
+  background: #eee;
+  height: 100%;
+}
