@@ -12,6 +12,11 @@
   
 </div>
 
+<div class="footer">
+  Created by <%= link_to "Ben Nolan", "http://www.bennolan.com/" %>. Check out the source at <%= link_to "github", "https://github.com/bnolan/nice-map-urls" %>.
+  If you're interested in geosocial stuff, you might like <%= link_to "Placepinner", "https://www.placepinner.com/" %>.
+</div>
+
 <script>
   $(function(){
     var view = new SearchView(<%= @place.to_json.html_safe %>)

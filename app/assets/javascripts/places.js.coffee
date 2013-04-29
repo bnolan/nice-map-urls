@@ -50,7 +50,7 @@ class SearchView
     @place = place
     
     $('#map').css {
-      height : $(window).height() - $('form').height()
+      height : $(window).height() - $('form').height() - $('.footer').height() - 40
     }
 
     $('form').submit @onSubmit
