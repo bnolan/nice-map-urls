@@ -1,7 +1,7 @@
 class PlacesController < ApplicationController
   
   def create
-    path = Iconv.iconv('ascii//ignore//translit', 'utf-8', params[:place][:path]).to_s.downcase.gsub(/[^0-9a-z\-\/]/,'')
+    path = params[:place][:path].parameterize
 
     place = Place.find_or_create_by_path(path)
     
